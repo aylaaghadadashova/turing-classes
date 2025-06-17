@@ -1,3 +1,5 @@
+package firstlab;
+
 import java.util.Scanner;
 
 public class Main {
