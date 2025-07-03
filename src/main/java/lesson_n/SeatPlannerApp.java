@@ -1,6 +1,5 @@
 package lesson_n;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Random;
 
