@@ -76,7 +76,8 @@ public class StringApp {
         System.out.println("subSequence: " + word.subSequence(2, 10)); // return type is CharSequence
         System.out.println("substring: " + word.substring(2, 10));
         System.out.println("valueOf: " + String.valueOf(arr)); //Return a string representation of different data types:
-
+        System.out.println(Arrays.toString(arr));
+        System.out.println(new String(arr));
 
 
 
