@@ -1,6 +1,7 @@
 package lesson11;
 
 public class Motoskilet{
+
     public String color;
     public String model;
     public String name;

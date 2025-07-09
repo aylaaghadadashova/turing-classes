@@ -1,6 +1,7 @@
 package lesson11;
 
 public class Car {
+
     public String model;
     public String color;
     public int wheels;
