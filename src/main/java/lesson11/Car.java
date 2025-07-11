@@ -22,4 +22,5 @@ public class Car {
     public String toString() {
         return ("Car = {model: %s\n color: %s\n wheels: %d\n engine type: %s\n usageYear: %.1f\n currentSpeed: %.2f}").formatted(this.model, this.color, this.wheels, this.engineType, this.usageYear, currentSpeed);
     }
+    
 }
