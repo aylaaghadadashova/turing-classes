@@ -54,6 +54,7 @@ public class Vehicle {
                 "brand: " + this.brand + "\n" +
                 "model: " + this.model + "\n" +
                 "plate number: " + this.plateNumber + "\n" +
-                "availability: " + this.isAvailable;
+                "availability: " + this.isAvailable + "\n" +
+                "}";
     }
 }

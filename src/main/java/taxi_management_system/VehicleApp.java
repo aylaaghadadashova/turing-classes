@@ -13,6 +13,7 @@ public class VehicleApp {
         if(v1 instanceof  Taxi){
             Taxi t = (Taxi) v1;
             t.calculateFare(10);
+            t.calculateFare(10, true);
         }
 
         Driver driver = new Driver("Ali Ahmadov", 35, "AZ123456");

@@ -40,6 +40,7 @@ public class Driver {
         return "Driver: {\n" +
                 "name: " + this.name + "\n" +
                 "age: " + this.age + "\n" +
-                "lisenceNumber : " + licenseNumber;
+                "lisenceNumber : " + licenseNumber + "\n" +
+                "}";
     }
 }

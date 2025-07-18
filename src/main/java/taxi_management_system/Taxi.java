@@ -30,7 +30,7 @@ public class Taxi extends Vehicle{
 
     @Override
     public void drive(){
-        System.out.printf("Taxi from %s is driving with %d passengers\n", taxiCompany, passengerCount);
+        System.out.printf("Taxi from %s is driving with %d passengers.\n", taxiCompany, passengerCount);
     }
 
     public void calculateFare(int km){
@@ -53,6 +53,7 @@ public class Taxi extends Vehicle{
                 "plate number: " + this.getPlateNumber() + "\n" +
                 "availability: " + this.getAvailable() + "\n" +
                 "passenger count: " + this.passengerCount + "\n" +
-                "taxi company: " + this.taxiCompany;
+                "taxi company: " + this.taxiCompany + "\n" +
+                "}";
     }
 }

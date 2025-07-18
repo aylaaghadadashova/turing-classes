@@ -39,6 +39,7 @@ public class Bus extends Vehicle{
                 "plate number: " + this.getPlateNumber() + "\n" +
                 "availability: " + this.getAvailable() + "\n" +
                 "capacity: " + this.capacity + "\n" +
-                "double decker: " + this.isDoubleDecker;
+                "double decker: " + this.isDoubleDecker + "\n" +
+                "}";
     }
 }
