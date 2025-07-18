@@ -24,7 +24,5 @@ public class VehicleApp {
         System.out.println();
         System.out.println(v1.vehicleInfo());
         System.out.println(v2.vehicleInfo());
-
-
     }
 }
