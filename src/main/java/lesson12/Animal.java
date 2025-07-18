@@ -2,8 +2,8 @@ package lesson12;
 
 public class Animal {
 
-    protected String name;
-    protected int age;
+    private String name;
+    private int age;
 
     public Animal(){};
 

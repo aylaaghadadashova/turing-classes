@@ -15,8 +15,8 @@ public class Man extends Human{
     @Override
     public String toString(){
         return "Man = {\n " +
-                "Name: " + this.name +
-                "\n Age: " + this.age +
+                "Name: " + this.getName() +
+                "\n Age: " + this.getAge() +
                 "\n Dog: " + this.dog.toString() +
                 "\n Cat: " + this.cat.toString() +
                 "\n}";

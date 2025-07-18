@@ -11,8 +11,8 @@ public class Dog extends Animal{
     @Override
     public String toString(){
         return "Dog = {\n " +
-                "Name: " + this.name +
-                "\n Age: " + this.age +
+                "Name: " + this.getName() +
+                "\n Age: " + this.getAge() +
                 "\n}";
     }
 }

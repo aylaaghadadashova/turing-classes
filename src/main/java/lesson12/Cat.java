@@ -10,8 +10,8 @@ public class Cat extends Animal{
     @Override
     public String toString(){
         return "Cat = {\n " +
-                "Name: " + this.name +
-                "\n Age: " + this.age +
+                "Name: " + this.getName() +
+                "\n Age: " + this.getAge() +
                 "\n}";
     }
 }
