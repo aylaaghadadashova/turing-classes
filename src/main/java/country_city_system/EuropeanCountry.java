@@ -1,0 +1,48 @@
+package country_city_system;
+
+import java.util.Objects;
+
+public class EuropeanCountry extends Country{
+    private boolean isInEuropeanUnion;
+    private String mainExport;
+    private int foundingYear;
+
+    public EuropeanCountry(int id, String name, String continent, int population, String code, City[] cities, int cityCount, boolean isInEuropeanUnion, String mainExport, int foundingYear) {
+        super(id, name, continent, population, code, cities, cityCount);
+        this.isInEuropeanUnion = isInEuropeanUnion;
+        this.mainExport = mainExport;
+        this.foundingYear = foundingYear;
+    }
+
+    public boolean isInEuropeanUnion() {
+        return isInEuropeanUnion;
+    }
+
+    public void setInEuropeanUnion(boolean inEuropeanUnion) {
+        isInEuropeanUnion = inEuropeanUnion;
+    }
+
+    public String getMainExport() {
+        return mainExport;
+    }
+
+    public void setMainExport(String mainExport) {
+        this.mainExport = mainExport;
+    }
+
+    public int getFoundingYear() {
+        return foundingYear;
+    }
+
+    public void setFoundingYear(int foundingYear) {
+        this.foundingYear = foundingYear;
+    }
+
+    @Override
+    public boolean equals(Object object){
+        if (object == null || getClass() != object.getClass()) return false;
+        if(!super.equals(object)) return false;
+        EuropeanCountry that = (EuropeanCountry) object;
+        return isInEuropeanUnion == that.isInEuropeanUnion && Objects.equals(mainExport, that.mainExport) && foundingYear == foundingYear;
+    }
+}
