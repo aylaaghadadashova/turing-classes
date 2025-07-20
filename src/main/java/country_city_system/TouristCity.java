@@ -9,7 +9,7 @@ public class TouristCity extends City{
 
     public TouristCity(){};
 
-    public TouristCity(int id, String name, int population, boolean isCapital, double area, Country country, int annualVisitors, String mainAttraction, double annualTourismRevenue) {
+    public TouristCity(int id, String name, long population, boolean isCapital, double area, Country country, int annualVisitors, String mainAttraction, double annualTourismRevenue) {
         super(id, name, population, isCapital, area, country);
         this.annualVisitors = annualVisitors;
         this.mainAttraction = mainAttraction;

@@ -7,7 +7,7 @@ public class EuropeanCountry extends Country{
     private String mainExport;
     private int foundingYear;
 
-    public EuropeanCountry(int id, String name, String continent, int population, String code, City[] cities, int cityCount, boolean isInEuropeanUnion, String mainExport, int foundingYear) {
+    public EuropeanCountry(int id, String name, String continent, long population, String code, City[] cities, int cityCount, boolean isInEuropeanUnion, String mainExport, int foundingYear) {
         super(id, name, continent, population, code, cities, cityCount);
         this.isInEuropeanUnion = isInEuropeanUnion;
         this.mainExport = mainExport;

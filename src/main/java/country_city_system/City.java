@@ -5,14 +5,14 @@ import java.util.Objects;
 public class City {
     private int id;
     private String name;
-    private int population;
+    private long population;
     private boolean isCapital;
     private double area;
     private Country country;
 
     public City(){};
 
-    public City(int id, String name, int population, boolean isCapital, double area, Country country) {
+    public City(int id, String name, long population, boolean isCapital, double area, Country country) {
         this.id = id;
         this.name = name;
         this.population = population;
@@ -37,11 +37,11 @@ public class City {
         this.name = name;
     }
 
-    public int getPopulation() {
+    public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(long population) {
         this.population = population;
     }
 

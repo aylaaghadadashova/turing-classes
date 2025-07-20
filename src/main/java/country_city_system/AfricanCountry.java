@@ -8,7 +8,7 @@ public class AfricanCountry extends Country{
     private boolean isDeveloping;
     private String currency;
 
-    public AfricanCountry(int id, String name, String continent, int population, String code, City[] cities, int cityCount, String mainLanguage, boolean isDeveloping, String currency) {
+    public AfricanCountry(int id, String name, String continent, long population, String code, City[] cities, int cityCount, String mainLanguage, boolean isDeveloping, String currency) {
         super(id, name, continent, population, code, cities, cityCount);
         this.mainLanguage = mainLanguage;
         this.isDeveloping = isDeveloping;

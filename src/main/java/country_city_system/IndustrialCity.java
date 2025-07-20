@@ -9,7 +9,7 @@ public class IndustrialCity extends City{
 
     public IndustrialCity(){};
 
-    public IndustrialCity(int id, String name, int population, boolean isCapital, double area, Country country, int numberOfFactories, String mainIndustry, double annualProductionVolume) {
+    public IndustrialCity(int id, String name, long population, boolean isCapital, double area, Country country, int numberOfFactories, String mainIndustry, double annualProductionVolume) {
         super(id, name, population, isCapital, area, country);
         this.numberOfFactories = numberOfFactories;
         this.mainIndustry = mainIndustry;

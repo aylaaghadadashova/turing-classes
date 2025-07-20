@@ -7,12 +7,12 @@ public class Country {
     private int id;
     private String name;
     private String continent;
-    private int population;
+    private long population;
     private String code;
     private City[] cities;
     private int cityCount;
 
-    public Country(int id, String name, String continent, int population, String code, City[] cities, int cityCount) {
+    public Country(int id, String name, String continent, long population, String code, City[] cities, int cityCount) {
         this.id = id;
         this.name = name;
         this.continent = continent;
@@ -54,11 +54,11 @@ public class Country {
         this.code = code;
     }
 
-    public int getPopulation() {
+    public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(long population) {
         this.population = population;
     }
 

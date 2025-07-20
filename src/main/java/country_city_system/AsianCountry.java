@@ -8,7 +8,7 @@ public class AsianCountry extends Country{
     private boolean hasNucleaarPower;
     private String mainReligion;
 
-    public AsianCountry(int id, String name, String continent, int population, String code, City[] cities, int cityCount, double gdpperCapita, String mainReligion, boolean hasNucleaarPower) {
+    public AsianCountry(int id, String name, String continent, long population, String code, City[] cities, int cityCount, double gdpperCapita, String mainReligion, boolean hasNucleaarPower) {
         super(id, name, continent, population, code, cities, cityCount);
         this.gdpperCapita = gdpperCapita;
         this.mainReligion = mainReligion;

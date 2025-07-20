@@ -6,14 +6,32 @@ public class CountryCityApp {
 
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
         Country[] countries = new Country[100];
         City[] cities = new City[500];
-
         int countryCount = 0;
         int cityCount = 0;
 
-        Scanner scanner = new Scanner(System.in);
+        while (true){
         showMenu();
+        System.out.print("Enter your option: ");
+        int option = scanner.nextInt();
+
+        switch (option){
+            case 1: addCity(cities, scanner); break;
+            case 2: addCountry();break;
+            case 3: removeCity(); break;
+            case 4: removeCountry(); break;
+            case 5: updateCity(); break;
+            case 6: updateCountry(); break;
+            case 7: displayAll(); break;
+            case 8: showRates(); break;
+            case 9: System.exit(0);
+            default:
+                System.out.println("Wrong input! Try again.");
+        }
+
+    }
     }
 
     public static void showMenu(){
@@ -25,16 +43,36 @@ public class CountryCityApp {
                 "5. Update City \n" +
                 "6. Update Country \n" +
                 "7. Display Full List of Countries and Cities \n" +
-                "8. Calculate Growth Rate");
+                "8. Calculate Growth Rate \n" +
+                "9. Exit");
     }
 
     public static void addCity(City[] cities, Scanner scanner){
-        System.out.println("Enter type of city: \n1. Capital City \n2.Tourist City \n3. Industrial City");
+        System.out.print("\n---ADD CITY---\n1. Capital City \n2.Tourist City \n3. Industrial City\n\nEnter type of city: ");
         int choice = scanner.nextInt();
-        System.out.println("Enter the fields: ");
-        if(choice == 1){
-            CapitalCity newCity = new CapitalCity();
+        scanner.nextLine();
 
-        }
+        System.out.println("Enter the fields: ");
+        System.out.print("ID: ");
+        String id = scanner.nextLine();
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+        System.out.println("Continent: ");
+        String continent = scanner.nextLine();
+        System.out.println("Population");
     }
+
+    public static void addCountry(){};
+
+    public static void removeCity(){};
+
+    public static void removeCountry(){};
+
+    public static void updateCity(){};
+
+    public static void updateCountry(){};
+
+    public static void displayAll(){};
+
+    public static void showRates(){};
 }
