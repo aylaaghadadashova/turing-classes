@@ -9,7 +9,7 @@ public class CapitalCity extends City{
 
     public CapitalCity(){};
 
-    public CapitalCity(int id, String name, long population, boolean isCapital, double area, Country country, String governmentType, String mayorName, int parliamentMembers) {
+    public CapitalCity(int id, String name, long population, boolean isCapital, double area, Country country, String governmentType, int parliamentMembers, String mayorName) {
         super(id, name, population, isCapital, area, country);
         this.governmentType = governmentType;
         this.mayorName = mayorName;

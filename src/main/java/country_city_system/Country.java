@@ -12,6 +12,11 @@ public class Country {
     private City[] cities;
     private int cityCount;
 
+    //test constructor
+    public Country(String name){
+        this.name = name;
+    }
+
     public Country(int id, String name, String continent, long population, String code, City[] cities, int cityCount) {
         this.id = id;
         this.name = name;
@@ -85,6 +90,27 @@ public class Country {
         return id == country.id && population == country.population && cityCount == country.cityCount && Objects.equals(name, country.name) && Objects.equals(continent, country.continent) && Objects.equals(code, country.code) && Objects.deepEquals(cities, country.cities);
     }
 
+    public void addCity(City city){
+        City[] tempArr = new City[cityCount + 1];
+        for(int i = 0; i < cityCount ; i++){
+            tempArr[i] = cities[i];
+        }
+        tempArr[cityCount] = city;
+        cities = tempArr;
+        cityCount++;
+    }
+
+    public void removeCity(int id){
+        City[] tempArr = new City[cityCount - 1];
+        int index = 0;
+        for(int i = 0; i < cityCount ; i++){
+            if(cities[i].getId() == id) continue;
+            tempArr[index++] = cities[i];
+        }
+        cities = tempArr;
+        cityCount--;
+    }
+
     @Override
     public String toString() {
         return "Country = {" + "\n" +
@@ -93,7 +119,7 @@ public class Country {
                 "continent: " + continent + "\n" +
                 "population: " + population + "\n" +
                 "code: " + code + "\n" +
-                "cities: " + Arrays.toString(cities) + "\n" +
+                "cities: " + Arrays.deepToString(cities) + "\n" +
                 "city count: " + cityCount +
                 '}';
     }
