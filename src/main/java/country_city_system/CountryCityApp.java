@@ -54,9 +54,23 @@ public class CountryCityApp {
         return -1;
     }
 
+    public static int indexOfCountry(int id){//Ayla
+        for(int i = 0; i<countryCount; i++){
+            if(id == countries[i].getId()) return i;
+        }
+        return -1;
+    }
+
     public static int indexOfCity(String cityName){//Ayla
         for(int i = 0; i<cityCount; i++){
             if(cityName.equals(cities[i].getName())) return i;
+        }
+        return -1;
+    }
+
+    public static int indexOfCity(int id){//Ayla
+        for(int i = 0; i<cityCount; i++){
+            if(id == cities[i].getId()) return i;
         }
         return -1;
     }
@@ -206,14 +220,14 @@ public class CountryCityApp {
         System.out.print("Enter ID of the city: ");
         int id = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Enter name of the city: ");
-        String name = scanner.nextLine();
 
-        int cityIndex = indexOfCity(name);
+        int cityIndex = indexOfCity(id);
         if (cityIndex == -1) {
             System.out.println("City not found!");
             return;
         }
+
+        String cityName = cities[cityIndex].getName();
 
         cities[cityIndex].getCountry().removeCity(id); //removing from inner array
         City[] tempArr = new City[cityCount - 1];
@@ -224,7 +238,7 @@ public class CountryCityApp {
         }
         cities = tempArr;
         cityCount--;
-        System.out.println("City '" + name + "' removed successfully!");
+        System.out.println("City '" + cityName + "' removed successfully!");
     };
 
     public static void removeCountry(){
@@ -238,94 +252,119 @@ public class CountryCityApp {
         System.out.print("Enter ID of the country: ");
         int id = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Enter name of the country: ");
-        String name = scanner.nextLine();
 
-        int countryIndex = indexOfCountry(name);
+        int countryIndex = indexOfCountry(id);
         if (countryIndex == -1) {
             System.out.println("Country not found!");
             return;
         }
 
-        Country[] tempArr = new Country[countryCount - 1];
-        int index1 = 0;
-        for(int i = 0; i < countryCount ; i++){
-            if(countries[i].getId() == id) continue;
-            tempArr[index1++] = countries[i];
+        String countryName = countries[countryIndex].getName();
+
+        // Remove country from array
+        for(int i = countryIndex; i < countryCount - 1; i++) {
+            countries[i] = countries[i + 1];
         }
-        countries = tempArr;
         countryCount--;
 
-        //Removing cities of the country
-        City[] tempArr2 = new City[cityCount-1];
-        int index2 = 0;
-        for (int i = 0; i < cityCount; i++){
-            if (cities[i].getCountry().getId() == id) {
-                cityCount--;
-                continue;
+        // Remove all cities belonging to this country
+        int newCityCount = 0;
+        for(int i = 0; i < cityCount; i++) {
+            if(cities[i].getCountry() == null || cities[i].getCountry().getId() != id) {
+                cities[newCityCount++] = cities[i];
             }
-            tempArr2[index2++] = cities[i];
         }
-        cities = Arrays.copyOf(tempArr2, cityCount);
-        System.out.println("Country '" + name + "' removed successfully!");
+        cityCount = newCityCount;
+
+        System.out.println("Country '" + countryName + "' and all its cities removed successfully!");
     }
 
     public static void updateCity() {
         System.out.println("\n---UPDATE CITY---\n");
 
-        System.out.print("Enter name of city: ");
+        if (cityCount == 0) {
+            System.out.println("No cities to update!");
+            return;
+        }
+
+        System.out.print("Enter name of city to update: ");
+        scanner.nextLine();
         String name = scanner.nextLine();
+
         int index = indexOfCity(name);
         if (index == -1){
             System.out.println("City not found!");
             return;
         }
+
         City city = cities[index];
+        System.out.println("\nCurrent city details:");
+        System.out.println(city);
 
-        System.out.println("\nUpdate the fields: ");
+        System.out.println("\nUpdate the fields:");
 
-        System.out.print("Population: ");
-        long population = scanner.nextLong();
-        System.out.print("Is capital: ");
-        boolean isCapital = scanner.nextBoolean();
-        System.out.print("Area: ");
-        double area = scanner.nextDouble();
+        System.out.print("Population (" + city.getPopulation() + "): ");
+        city.setPopulation(scanner.nextLong());
+
+        System.out.print("Is capital (" + city.isCapital() + "): ");
+        city.setCapital(scanner.nextBoolean());
+
+        System.out.print("Area (" + city.getArea() + "): ");
+        city.setArea(scanner.nextDouble());
+        scanner.nextLine();
+
         if (city instanceof CapitalCity) {
-            System.out.print("Government type: ");
-            String governmentType = scanner.nextLine();
-            System.out.print("Parliament members: ");
-            int parliamentMembers = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Mayor name: ");
-            String mayorName = scanner.nextLine();
+            CapitalCity capital = (CapitalCity) city;
 
-            city = new CapitalCity(cities[index].getId(), name, population, isCapital, area, city.getCountry(), governmentType, parliamentMembers, mayorName);
+            System.out.print("Government type (" + capital.getGovernmentType() + "): ");
+            capital.setGovernmentType(scanner.nextLine());
+
+            System.out.print("Parliament members (" + capital.getParliamentMembers() + "): ");
+            capital.setParliamentMembers(scanner.nextInt());
+            scanner.nextLine();
+
+            System.out.print("Mayor name (" + capital.getMayorName() + "): ");
+            capital.setMayorName(scanner.nextLine());
         } else if (city instanceof TouristCity) {
-            System.out.print("Annual visitors: ");
-            int annualVisitors = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Main attraction: ");
-            String mainAttraction = scanner.nextLine();
-            System.out.print("Annual tourism revenue: ");
-            double annualTourismRevenue = scanner.nextDouble();
+            TouristCity tourist = (TouristCity) city;
+
+            System.out.print("Annual visitors (" + tourist.getAnnualVisitors() + "): ");
+            tourist.setAnnualVisitors(scanner.nextInt());
             scanner.nextLine();
 
-            TouristCity touristCity = new TouristCity(cities[index].getId(), name, population, isCapital, area, countries[index], annualVisitors, mainAttraction, annualTourismRevenue);
+            System.out.print("Main attraction (" + tourist.getMainAttraction() + "): ");
+            tourist.setMainAttraction(scanner.nextLine());
+
+            System.out.print("Annual tourism revenue (" + tourist.getAnnualTourismRevenue() + "): ");
+            tourist.setAnnualTourismRevenue(scanner.nextDouble());
+            scanner.nextLine();
         } else if (city instanceof IndustrialCity) {
-            System.out.print("Number of factories: ");
-            int numberOfFactories = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Main industry: ");
-            String mainIndustry = scanner.nextLine();
-            System.out.print("Annual production volume: ");
-            double annualProductionVolume = scanner.nextDouble();
+            IndustrialCity industrial = (IndustrialCity) city;
+
+            System.out.print("Number of factories (" + industrial.getNumberOfFactories() + "): ");
+            industrial.setNumberOfFactories(scanner.nextInt());
             scanner.nextLine();
 
-            IndustrialCity industrialCity = new IndustrialCity(cities[index].getId(), name, population, isCapital, area, countries[index], numberOfFactories, mainIndustry, annualProductionVolume);
+            System.out.print("Main industry (" + industrial.getMainIndustry() + "): ");
+            industrial.setMainIndustry(scanner.nextLine());
+
+            System.out.print("Annual production volume (" + industrial.getAnnualProductionVolume() + "): ");
+            industrial.setAnnualProductionVolume(scanner.nextDouble());
+            scanner.nextLine();
         }
         //updating in inner arr of the country
-        int countryIndex = indexOfCountry(city.getCountry().getName());
-        countries[countryIndex].getCities()[indexOfCity(name)] = city;
+        Country country = city.getCountry();
+        if (country != null) {
+            City[] countryCities = country.getCities();
+            for (int i = 0; i < country.getCityCount(); i++) {
+                if (countryCities[i].getName().equals(name)) {
+                    countryCities[i] = city;
+                    break;
+                }
+            }
+        }
+
+        System.out.println("City updated successfully!");
     }
 
     public static void updateCountry(){};
