@@ -1,5 +1,6 @@
 package country_city_system;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class EuropeanCountry extends Country{
@@ -44,5 +45,21 @@ public class EuropeanCountry extends Country{
         if(!super.equals(object)) return false;
         EuropeanCountry that = (EuropeanCountry) object;
         return isInEuropeanUnion == that.isInEuropeanUnion && Objects.equals(mainExport, that.mainExport) && foundingYear == foundingYear;
+    }
+
+    @Override
+    public String toString() {
+        return "Country = {" + "\n" +
+                "id: " + this.getId() + "\n" +
+                "name: " + this.getName() + "\n" +
+                "continent: " + this.getContinent() + "\n" +
+                "population: " + this.getPopulation() + "\n" +
+                "code: " + super.getCode() + "\n" +
+                "city count: " + this.getCityCount() + "\n" +
+                "cities: " + Arrays.toString(this.getCities()) + "\n" +
+                "is in European Union: " + isInEuropeanUnion + "\n" +
+                "main export: " + mainExport + "\n" +
+                "founding year: " + foundingYear + "\n" +
+                '}';
     }
 }

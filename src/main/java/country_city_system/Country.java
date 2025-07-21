@@ -23,7 +23,7 @@ public class Country {
         this.continent = continent;
         this.population = population;
         this.code = code;
-        this.cities = cities;
+        this.cities = cities != null ? cities : new City[0];
         this.cityCount = cityCount;
     }
 
@@ -111,6 +111,14 @@ public class Country {
         cityCount--;
     }
 
+    public int indexOfCity(String cityName){//Ayla
+        for(int i = 0; i<cityCount; i++){
+            if(cityName.equals(cities[i].getName())) return i;
+        }
+        return -1;
+    }
+
+
     @Override
     public String toString() {
         return "Country = {" + "\n" +
@@ -119,8 +127,8 @@ public class Country {
                 "continent: " + continent + "\n" +
                 "population: " + population + "\n" +
                 "code: " + code + "\n" +
-                "cities: " + Arrays.deepToString(cities) + "\n" +
-                "city count: " + cityCount +
+                "city count: " + cityCount + "\n" +
+                "cities: " + Arrays.toString(cities)  +
                 '}';
     }
 }

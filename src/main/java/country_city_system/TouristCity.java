@@ -48,6 +48,16 @@ public class TouristCity extends City{
         return annualVisitors == that.annualVisitors && Double.compare(annualTourismRevenue, that.annualTourismRevenue) == 0 && Objects.equals(mainAttraction, that.mainAttraction);
     }
 
+    public double calculateTourismGrowth(double prevRevenue, int years) {
+        return ((annualTourismRevenue - prevRevenue) / prevRevenue) * 100 / years;
+    }
+
+    @Override
+    public double calculateGrowthRate(double previousPop, int years) {
+        double baseGrowth = super.calculateGrowthRate(previousPop, years);
+        return baseGrowth * 1.1; // 10% higher than normal cities
+    }
+
     @Override
     public String toString() {
         return "City{" +
@@ -56,7 +66,7 @@ public class TouristCity extends City{
                 "population: " + this.getPopulation() + "\n" +
                 "capital: " + this.isCapital() + "\n" +
                 "area=" + this.getArea() + "\n" +
-                "country: " + this.getCountry() + "\n" +
+                "country: " + this.getCountry().getName() + "\n" +
                 "annaul visitors: " +annualVisitors + "\n" +
                 "main attraction: " + mainAttraction + "\n" +
                 "annual toursim revenue: " + annualTourismRevenue + "\n" +

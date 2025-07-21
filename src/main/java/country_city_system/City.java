@@ -76,15 +76,25 @@ public class City {
         return id == city.id && population == city.population && isCapital == city.isCapital && Double.compare(area, city.area) == 0 && Objects.equals(name, city.name) && Objects.equals(country, city.country);
     }
 
+    public double calculateGrowthRate(double previousPop, int years) {
+        double growthRate = ((population - previousPop) / previousPop) * 100;
+        return growthRate / years;
+    }
+
+    public double calculateGrowthRate(double previousPop, int years, double migrationEffect) {
+        double naturalGrowth = calculateGrowthRate(previousPop, years);
+        return naturalGrowth + migrationEffect / years;
+    }
+
     @Override
     public String toString() {
-        return "City{" +
+        return "\nCity{" +
                 "ID: " + id + "\n" +
                 "name: " + name + "\n" +
                 "population: " + population + "\n" +
                 "capital: " + isCapital + "\n" +
                 "area=" + area + "\n" +
-                "country: " + country + "\n" +
+                "country: " + country.getName() + "\n" +
                 '}';
     }
 }

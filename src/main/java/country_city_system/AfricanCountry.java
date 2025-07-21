@@ -55,8 +55,8 @@ public class AfricanCountry extends Country{
                 "continent: " + this.getContinent() + "\n" +
                 "population: " + this.getPopulation() + "\n" +
                 "code: " + super.getCode() + "\n" +
-                "cities: " + Arrays.toString(this.getCities()) + "\n" +
                 "city count: " + this.getCityCount() + "\n" +
+                "cities: " + Arrays.toString(this.getCities()) + "\n" +
                 "main language: " + mainLanguage + "\n" +
                 "developing: " + isDeveloping + "\n" +
                 "currency: " + currency + "\n" +

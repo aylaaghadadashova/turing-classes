@@ -55,8 +55,8 @@ public class AsianCountry extends Country{
                 "continent: " + this.getContinent() + "\n" +
                 "population: " + this.getPopulation() + "\n" +
                 "code: " + super.getCode() + "\n" +
-                "cities: " + Arrays.toString(this.getCities()) + "\n" +
                 "city count: " + this.getCityCount() + "\n" +
+                "cities: " + Arrays.toString(this.getCities()) + "\n" +
                 "gdp per capita: " + gdpperCapita + "\n" +
                 "nuclear power: " + hasNucleaarPower + "\n" +
                 "main religion: " + mainReligion + "\n" +

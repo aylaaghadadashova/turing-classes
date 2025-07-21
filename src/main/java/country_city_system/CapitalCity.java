@@ -56,7 +56,7 @@ public class CapitalCity extends City{
                 "population: " + this.getPopulation() + "\n" +
                 "capital: " + this.isCapital() + "\n" +
                 "area=" + this.getArea() + "\n" +
-                "country: " + this.getCountry() + "\n" +
+                "country: " + this.getCountry().getName() + "\n" +
                 "government type: " + governmentType + "\n" +
                 "parliament members: " + parliamentMembers + "\n" +
                 "mayor name: " + mayorName + "\n" +

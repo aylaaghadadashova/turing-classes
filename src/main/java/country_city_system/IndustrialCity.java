@@ -48,6 +48,16 @@ public class IndustrialCity extends City{
         return numberOfFactories == that.numberOfFactories && Double.compare(annualProductionVolume, that.annualProductionVolume) == 0 && Objects.equals(mainIndustry, that.mainIndustry);
     }
 
+    public double calculateProductionGrowth(double prevVolume, int years) {
+        return ((annualProductionVolume - prevVolume) / prevVolume) * 100 / years;
+    }
+
+    @Override
+    public double calculateGrowthRate(double previousPop, int years) {
+        double baseGrowth = super.calculateGrowthRate(previousPop, years);
+        return baseGrowth * 0.9; // 10% lower than normal cities
+    }
+
     @Override
     public String toString() {
         return "City{" +
@@ -56,7 +66,7 @@ public class IndustrialCity extends City{
                 "population: " + this.getPopulation() + "\n" +
                 "capital: " + this.isCapital() + "\n" +
                 "area=" + this.getArea() + "\n" +
-                "country: " + this.getCountry() + "\n" +
+                "country: " + this.getCountry().getName() + "\n" +
                 "number of factories: " + numberOfFactories + "\n" +
                 "main industry: " + mainIndustry + "\n" +
                 "annual production volume: " + annualProductionVolume + "\n" +
