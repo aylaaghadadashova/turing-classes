@@ -1,6 +1,5 @@
 package country_city_system;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -99,7 +98,6 @@ public class CountryCityApp {
         scanner.nextLine();
         System.out.print("Name: ");
         String name = scanner.nextLine();
-        scanner.nextLine();
         System.out.print("Population: ");
         long population = scanner.nextLong();
         System.out.print("Is capital: ");
@@ -388,6 +386,7 @@ public class CountryCityApp {
         System.out.println("3. Industrial production growth");
         System.out.print("\nSelect calculation type: ");
         int choice = scanner.nextInt();
+        scanner.nextLine();
 
         if(choice == 1) {
             System.out.print("Enter city name: ");
@@ -409,7 +408,7 @@ public class CountryCityApp {
             City city = cities[index];
             double growthRate;
 
-            if (includeMigration == "yes") {
+            if (includeMigration.equals("yes")) {
                 System.out.print("Enter total migration effect (%): ");
                 double migration = scanner.nextDouble();
                 growthRate = city.calculateGrowthRate(prevPop, years, migration);
