@@ -1,5 +1,6 @@
 package country_city_system;
 
+import javax.sound.midi.Soundbank;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -228,16 +229,12 @@ public class CountryCityApp {
         String cityName = cities[cityIndex].getName();
 
         cities[cityIndex].getCountry().removeCity(id); //removing from inner array
-        City[] tempArr = new City[cityCount - 1];
-        int index = 0;
-        for(int i = 0; i < cityCount ; i++){
-            if(cities[i].getId() == id) continue;
-            tempArr[index++] = cities[i];
+        for(int i = cityIndex; i<cityCount; i++){
+            cities[i] = cities[i++];
         }
-        cities = tempArr;
         cityCount--;
         System.out.println("City '" + cityName + "' removed successfully!");
-    };
+    }
 
     public static void removeCountry(){
         System.out.println("\n--- REMOVE COUNTRY ---\n");
@@ -366,7 +363,78 @@ public class CountryCityApp {
         System.out.println("City updated successfully!");
     }
 
-    public static void updateCountry(){};
+    public static void updateCountry(){
+        System.out.println("\n--- UPDATE COUNTRY ---\n");
+
+        if(countryCount == 0){
+            System.out.println("No country to update!");
+            return;
+        }
+
+        System.out.println("Enter country id to update: ");
+        int id = scanner.nextInt();
+
+        int countryIndex = indexOfCountry(id);
+        if(countryIndex == -1){
+            System.out.println("Country not found!");
+        }
+
+        Country country = countries[countryIndex];
+
+        System.out.println("Enter fields to update");
+
+        System.out.print("Name (" + country.getName() + "): ");
+        scanner.nextLine();
+        country.setName(scanner.nextLine());
+
+        System.out.println("Populations (" + country.getPopulation() + "): ");
+        country.setPopulation(scanner.nextLong());
+
+        System.out.println(("Code (" + country.getCode() + "): "));
+        scanner.nextInt();
+        country.setCode(scanner.nextLine());
+
+        if(country instanceof AfricanCountry){
+            AfricanCountry african = (AfricanCountry) country;
+
+            System.out.println("Main language (" + african.getMainLanguage() + "): ");
+            scanner.nextLine();
+            african.setMainLanguage(scanner.nextLine());
+
+            System.out.println("Is developing: (" + african.isDeveloping() + "): ");
+            african.setDeveloping(scanner.nextBoolean());
+
+            System.out.println("Currency (" + african.getCurrency() + "): ");
+            scanner.nextLine();
+            african.setCurrency(scanner.nextLine());
+        } else if(country instanceof AsianCountry){
+            AsianCountry asian = (AsianCountry) country;
+
+            System.out.println("GDP per capita (" + asian.getGdpperCapita() + "): ");
+            asian.setGdpperCapita(scanner.nextDouble());
+
+            System.out.println("Has nuclear power: (" + asian.isHasNucleaarPower() + "): ");
+            asian.setHasNucleaarPower(scanner.nextBoolean());
+
+            System.out.println("Main religion (" + asian.getMainReligion() + "): ");
+            scanner.nextLine();
+            asian.setMainReligion(scanner.nextLine());
+        } else if(country instanceof EuropeanCountry){
+            EuropeanCountry european = (EuropeanCountry) country;
+
+            System.out.println("Is in European Union (" + european.isInEuropeanUnion() + "): ");
+            european.setInEuropeanUnion(scanner.nextBoolean());
+
+            System.out.println("Main export: (" + european.getMainExport() + "): ");
+            scanner.nextLine();
+            european.setMainExport(scanner.nextLine());
+
+            System.out.println("Founding year (" + european.getFoundingYear() + "): ");
+            european.setFoundingYear(scanner.nextInt());
+        }
+
+        System.out.println("Country successfully updated!");
+    }
 
     public static void displayAll(){
         System.out.println("\n--- FULL LIST OF COUNTRIES AND CITIES ---\n");
@@ -378,7 +446,7 @@ public class CountryCityApp {
         for (int i = 0; i < countryCount; i++){
             System.out.println(countries[i]);
         }
-    };
+    }
 
     public static void showRates(){
         System.out.println("\n--- GROWTH RATE CALCULATIONS ---\n");
