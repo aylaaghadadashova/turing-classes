@@ -296,10 +296,11 @@ public class CountryCityApp {
         }
 
         City city = cities[index];
-        System.out.println("\nCurrent city details:");
-        System.out.println(city);
 
         System.out.println("\nUpdate the fields:");
+
+        System.out.print("Name (" + city.getName() + "): ");
+        city.setName(scanner.nextLine());
 
         System.out.print("Population (" + city.getPopulation() + "): ");
         city.setPopulation(scanner.nextLong());
