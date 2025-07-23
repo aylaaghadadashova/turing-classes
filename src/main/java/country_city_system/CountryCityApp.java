@@ -107,11 +107,12 @@ public class CountryCityApp {
         double area = scanner.nextDouble();
         if(choice == 1) {
             System.out.print("Government type: ");
+            scanner.nextLine();
             String governmentType = scanner.nextLine();
             System.out.print("Parliament members: ");
             int parliamentMembers = scanner.nextInt();
-            scanner.nextLine();
             System.out.print("Mayor name: ");
+            scanner.nextLine();
             String mayorName = scanner.nextLine();
 
             CapitalCity capitalCity = new CapitalCity(id, name, population, isCapital, area, countries[index], governmentType, parliamentMembers, mayorName);
@@ -189,8 +190,8 @@ public class CountryCityApp {
             System.out.print("Has nuclear power: ");
             boolean hasNuclearPower = scanner.nextBoolean();
             System.out.print("Main religion: ");
-            String mainReligion = scanner.nextLine();
             scanner.nextLine();
+            String mainReligion = scanner.nextLine();
 
             AsianCountry asianCountry = new AsianCountry(id, name, continent, population, code, innerCities, cityCount, gdpPerCapita, hasNuclearPower, mainReligion);
             countries[countryCount++] = asianCountry;
@@ -198,6 +199,7 @@ public class CountryCityApp {
             System.out.print("Is in European Union: ");
             boolean isInEuropeanUnion = scanner.nextBoolean();
             System.out.print("Main export: ");
+            scanner.nextLine();
             String mainExport = scanner.nextLine();
             scanner.nextLine();
             System.out.print("Founding year: ");
@@ -294,7 +296,7 @@ public class CountryCityApp {
 
         City city = cities[index];
 
-        System.out.println("\nUpdate the fields:");
+        System.out.print("\nUpdate the fields:");
 
         System.out.print("Name (" + city.getName() + "): ");
         city.setName(scanner.nextLine());
@@ -371,7 +373,7 @@ public class CountryCityApp {
             return;
         }
 
-        System.out.println("Enter country id to update: ");
+        System.out.print("Enter country id to update: ");
         int id = scanner.nextInt();
 
         int countryIndex = indexOfCountry(id);
@@ -391,7 +393,7 @@ public class CountryCityApp {
         country.setPopulation(scanner.nextLong());
 
         System.out.println(("Code (" + country.getCode() + "): "));
-        scanner.nextInt();
+        scanner.nextLine();
         country.setCode(scanner.nextLine());
 
         if(country instanceof AfricanCountry){
@@ -429,8 +431,8 @@ public class CountryCityApp {
             scanner.nextLine();
             european.setMainExport(scanner.nextLine());
 
-            System.out.println("Founding year (" + european.getFoundingYear() + "): ");
-            european.setFoundingYear(scanner.nextInt());
+//            System.out.println("Founding year (" + european.getFoundingYear() + "): ");
+//            european.setFoundingYear(scanner.nextInt());
         }
 
         System.out.println("Country successfully updated!");
